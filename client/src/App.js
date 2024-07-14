@@ -23,9 +23,7 @@ function App() {
     <div className='App'>
       <h1>test 하는 중...</h1>
       <div>
-        {/* 삼항연산자 */}
         { (typeof data.users === 'undefined') ? (
-          // fetch가 완료되지 않았을 경우에 대한 처리
           <p>loding...</p>
         ) : (
           data.users.map((u) => <p>{u.name}</p>)
