@@ -1,10 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import LoginForm from './LoginForm';
 
 function App() {
   // state
-  const [data, setData] = useState([{}])
+  const [data, setData] = useState({ users: [] });
 
   useEffect(() => 
     {
@@ -21,18 +20,14 @@ function App() {
     }, [])
 
   return (
-    <div>
-      {/* LoginForm 컴포넌트를 렌더링 */}
-      <LoginForm />
-
-      {/* 가져온 데이터를 출력 */}
+    <div className='App'>
+      <h1>test 하는 중...</h1>
       <div>
-        <h2>사용자 목록</h2>
-        <ul>
-          {data.map(user => (
-            <li key={user.id}>{user.username}</li>
-          ))}
-        </ul>
+        { (typeof data.users === 'undefined') ? (
+          <p>loding...</p>
+        ) : (
+          data.users.map((u) => <p>{u.name}</p>)
+        )}
       </div>
     </div>
   );
