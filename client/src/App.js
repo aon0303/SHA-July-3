@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import Signup from './Signup';
 
 function App() {
   // state
-  const [data, setData] = useState([{}])
+  const [data, setData] = useState({ users: [] });
 
   useEffect(() => 
     {
@@ -22,13 +23,14 @@ function App() {
   return (
     <div className='App'>
       <h1>test 하는 중...</h1>
+      <Signup />
       <div>
-        {/* 삼항연산자 */}
-        { (typeof data.users === 'undefined') ? (
-          // fetch가 완료되지 않았을 경우에 대한 처리
-          <p>loding...</p>
+        <h2>사용자 목록</h2>
+        {data.users.length === 0 ? (
+          // 데이터가 아직 로딩되지 않았거나 빈 배열일 경우
+          <p>비어있음</p>
         ) : (
-          data.users.map((u) => <p>{u.name}</p>)
+          data.users.map((user, index) => <p key={index}>{user.nickname}</p>)
         )}
       </div>
     </div>
